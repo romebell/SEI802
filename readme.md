@@ -1,5 +1,5 @@
 ---
-description: Welcome to SEI 802!
+Welcome to SEI 802!
 ---
 
 # Introduction
