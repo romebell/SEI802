@@ -2,7 +2,7 @@
 
 ![](https://user-images.githubusercontent.com/13144457/114315897-ecf26a00-9ab5-11eb-9a19-d6f14c261c73.jpg)
 
-Welcome to GA DC! This is the notes repository for our Software Engineering Immersive \(formerly known as Software Engineering Immersive\). You can view the content in a more searchable/friendly format on [Gitbook](https://romebell.gitbook.io/sei-412/)!
+Welcome to GA Los Angeles! This is the notes repository for our Software Engineering Immersive \(formerly known as Software Engineering Immersive\). You can view the content in a more searchable/friendly format on [Gitbook](https://romebell.gitbook.io/sei-802/)!
 
 ![GA Logo](.gitbook/assets/ga_cog.png)
 
@@ -16,7 +16,7 @@ This is totally optional. If you choose to do this, please update every 3-6 mont
 * On your terminal, run 
 
   ```text
-  git remote add upstream git@github.com:romebell/SEI412.git
+  git remote add upstream git@github.com:romebell/SEI802.git
   ```
 
 * Install the Gitbook CLI tool by running 
