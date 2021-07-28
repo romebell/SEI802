@@ -1,5 +1,5 @@
 ---
-description: Welcome to SEI 412!
+description: Welcome to SEI 802!
 ---
 
 # Introduction
@@ -16,10 +16,11 @@ Let's enjoy the ride 🎢 `together`. Let's go!
 
 | Name | Role | Slack | Email |
 | :--- | :--- | :--- | :--- |
-| Rome Bell | Lead Instructor | @rome | rome.bell@generalassemb.ly |
-| Joshua Smith | Lead Instructor | @Joshua Smith | joshua.smith@generalassemb.ly |
-| Paula Bannerman | Instructor Associate | @Paula Bannerman (Dcartist) | paula.bannerman@generalassemb.ly |
-| Brian Krabec | Instructor Associate | @Brian Krabec | brian.krabec@generalassemb.ly |
+| Rome Bell | Lead Instructor | @rome | rome.bell@ga.co |
+| Quinlan Sparks | Instructor Associate | @Quinlan Sparks | quinlan.sparks@generalassemb.ly |
+| Cassie Pitkin | Career Coach | @Cassie Pitkin | cassie.pitkin@generalassemb.ly |
+| Claire Avershal | Campus Manager | @Claire Avershal | claire.avershal@ga.co |
+| Ashley Berryhill | Instructor Manager | @Ashley Berryhill | ashley.berryhill@ga.co |
 
 ## GA SEI Graduation Requirements
 
@@ -28,7 +29,7 @@ General Assembly's courses are pass/fail programs. We have certain requirements 
 * No more than 3 days absent from class over the duration of the course \(3 tardies equals 1 absence\)
 * Successful completion of four assigned projects
 * Participating in GA’s mid-course and end-of-course feedback surveys
-* Complete 80% of assigned "deliverables"
+* Complete 80% of assigned `deliverables`
 
 When you complete our program with passing status, you unlock our alumni perks:
 
@@ -40,7 +41,7 @@ When you complete our program with passing status, you unlock our alumni perks:
 ## Suggested Repo Structure
 
 ```text
-/SEI412
+/SEI802
     /unit_one
     /unit_two
     /unit_three
