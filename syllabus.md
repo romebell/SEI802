@@ -9,7 +9,7 @@
 
 ## Calendar (updated weekly)
 
-[SEI 802 Calendar](https://calendar.google.com/calendar/u/2?cid=Y19wdW9pdDlmZnQ2ZWs0cThxaTBmdnA1bmNmb0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t)\*
+[SEI 802 Calendar](https://calendar.google.com/calendar/embed?src=c_puoit9fft6ek4q8qi0fvp5ncfo%40group.calendar.google.com&ctz=America%2FLos_Angeles)\*
 
 `Important Disclaimer`: This schedule is a guideline and serves as an estimate for what your instructional staff would like to accomplish. This calendar is not set in stone and is subject to change at any time for reasons such as snow days, staff illness, special events, and individual class pacing.
 
