@@ -2,7 +2,7 @@
 
 ![](https://res.cloudinary.com/briezh/image/upload/v1539805526/spaceneedle_ga_sea_ykjk40.jpg)
 
-Welcome to GA Atlanta! This is the notes repository for our Software Engineering Immersive \(formerly known as Web Development Immersive\). You can view the content in a more searchable/friendly format on [Gitbook](https://romebell.gitbook.io/sei-1019/)!
+Welcome to GA Los Angeles! This is the notes repository for our Software Engineering Immersive. You can view the content in a more searchable/friendly format on [Gitbook](https://romebell.gitbook.io/sei-802/)!
 
 ![GA Logo](.gitbook/assets/ga_cog.png)
 
@@ -15,7 +15,7 @@ This is totally optional. If you choose to do this, please update every 3-6 mont
 * Setup a remote for your fork
 * On your terminal, run 
 ```text
-git remote add upstream git@github.com:romebell/SEI1019.git
+git remote add upstream git@github.com:romebell/SEI802.git
 ```
 * Install the Gitbook CLI tool by running 
 ```text
