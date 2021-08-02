@@ -1,6 +1,6 @@
 # Mac OSX
 
-## SEI Washington DC Install Fest
+## SEI Los Angeles Install Fest
 
 ## PART 1
 
@@ -148,42 +148,6 @@ Your sublime \(or Atom\) editor will popup with configuration settings, at the b
 ```text
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin
 ```
-
-While we're here, add these two functions and environment variables to make it easier to access, change and refresh our ZSH configuration file in the future. Copy and paste these to the end of the file.
-
-If you plan on using Sublime Text copy this:
-
-```text
-export VISUAL=subl
-export EDITOR="$VISUAL"
-
-function zedit() {
-  subl ~/.zshrc
-}
-
-function zrefresh() {
-  echo "Refreshing your ZSH configuration."
-  source ~/.zshrc
-}
-```
-
-Otherwise, if you plan on using Atom, copy this instead:
-
-```text
-export VISUAL=atom
-export EDITOR="$VISUAL"
-
-function zedit() {
-  atom ~/.zshrc
-}
-
-function zrefresh() {
-  echo "Refreshing your ZSH configuration."
-  source ~/.zshrc
-}
-```
-
-Save the file, close Sublime \(or Atom\), and restart your terminal.
 
 Type `which psql` at which point should display
 
