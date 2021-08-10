@@ -236,7 +236,7 @@ helloDiv.classList.remove('yellow');
 console.log(helloDiv.classList.contains('yellow'));
 ```
 
-**DOM Events**
+### DOM Events
 
 DOM events are the bedrock of interactivity on web pages. They enable us as developers to implement _event-driven programming_. This programming paradigm is such that much of our code, written as _event listeners_, runs in response to events being triggered during run-time.
 
