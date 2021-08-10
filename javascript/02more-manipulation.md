@@ -25,7 +25,7 @@ Let's look at an example of how to create a new element in JavaScript and add it
 ### Adding A New Link to the Bottom of a Page
 
 ```javascript
-var a = document.createElement("a");
+let a = document.createElement("a");
 a.href = "http://hackertyper.com/";
 a.textContent = "Hack!";
 
@@ -34,7 +34,7 @@ document.body.appendChild(a);
 
 First, we use `document.createElement` and pass a string representing the tag we want to create. In this case we pass `"a"` to say we want to make a new link anchor tag. Save the result of the function into a variable.
 
-`document.createElement` returns a new anchor tag. The element saved in our var has properties like any other anchor tag on the page, except they're all empty because it was just created. We must manually add `href` and `textContent` to set the link and display text.
+`document.createElement` returns a new anchor tag. The element saved in our variable has properties like any other anchor tag on the page, except they're all empty because it was just created. We must manually add `href` and `textContent` to set the link and display text.
 
 Finally, we add the new anchor tag to the `<body>` with `document.body.appendChild`. This adds the anchor to the bottom of the page.
 
@@ -53,11 +53,20 @@ In order to append a new element to any other element, simply obtain a reference
 ```
 
 ```javascript
-// obtain a reference to where we'll add it
-var list = document.getElementById("my-favorite-movies");
+
+/**
+ * Append Child Element
+ * @todo reference - obtain a reference to where we'll add it
+ * @todo create - create an li element
+ * @todo modify - modify the new element text
+ * @todo attach - attach new element to parent
+ * */ 
+
+// REFERENCE
+let list = document.getElementById("my-favorite-movies");
 
 // CREATE
-var newMovie = document.createElement("li");
+let newMovie = document.createElement("li");
 
 // MODIFY
 newMovie.textContent = "Pirates of Silicon Valley";
@@ -75,7 +84,7 @@ It's easy to add things to the end of the body, at the bottom of a div, or at th
 Use the following syntax:
 
 ```javascript
-var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+let insertedNode = parentNode.insertBefore(newNode, referenceNode);
 ```
 
 * `parentNode` refers to the container \(like body, or a div, or a list\)
@@ -87,17 +96,29 @@ We can obtain a reference to all of the elements attached to a `parentNode` by a
 Here's what it looks like all together:
 
 ```javascript
-var list = document.getElementById("my-favorite-movies");
+/**
+ * Using insertBefore
+ * @todo reference - obtain a reference to where we'll add it
+ * @todo create - create an li element
+ * @todo reference - obtain a reference to second element
+ * @todo print - print second element reference to console
+ * @todo insert - use insertBefore to add newMovie just before the second element.
+ * */
 
-var newMovie = document.createElement("li");
+// REFERENCE
+const list = document.getElementById("my-favorite-movies");
+
+// CREATE
+let newMovie = document.createElement("li");
 newMovie.innerText = "Dr. Strangelove";
 
-// get a reference to the second element inside the list
-var second = list.children[1];
+// REFERENCE
+let second = list.children[1];
 
+// PRINT
 console.log(second);
 
-// use insertBefore to add newMovie just before the second element.
+// INSERT
 list.insertBefore(newMovie, second);
 ```
 
@@ -136,7 +157,7 @@ It's way easier to remove elements than it is to add them. Use this syntax:
 parent.removeChild(child);
 
 // you may, if desired, save a reference to the element that was removed.
-var oldChild = parent.removeChild(child);
+let oldChild = parent.removeChild(child);
 ```
 
 `.removeChild()` allows you to remove any element you have reference to. If you save a removed element to a variable then you have access to it and can add it to somewhere else on the page.
