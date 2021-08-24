@@ -105,10 +105,10 @@ Wednesday the 11th of September in the year 1985
 
 <details>
 <summary>SOLUTION</summary>
-<br>
 
- ```javascript
- 
+#### Solution Below
+
+```javascript
  const moment = require('moment') 
  // Prints today's date 
  console.log(moment().format("MMM Do YYYY")) 
@@ -116,13 +116,11 @@ Wednesday the 11th of September in the year 1985
  console.log(moment('09-20-1885', 'MM DD YYYY').format("dddd [the] Do [of] MMMM [in the year] YYYY")) 
  // Prints how long ago my birthday was 
  console.log('Oh boy, that was', moment('09-11-1985', 'MM DD YYYY').fromNow(), 'years ago!') 
-
 ```
+
 </details>
 
-
-
-#### Git Ignore File
+#### `.gitignore` File
 
 Before we get too much further, **WAIT**!
 
@@ -165,6 +163,11 @@ node_modules
 ```
 
 Congrats - now when you add git tracking to this folder, it will not track the node\_modules folder and will not push it to github!
+
+`PROTIP` : Use the following command in terminal to create `.gitignore` and add `node_modules/`:
+```zsh
+echo "node_modules/" >> .gitignore
+```
 
 Other common things to ignore for git are things like `.env` files which contain localized settings and possibly sensitive data like secret keys, salts, or API keys. Thus leading to this pro-tip:
 
