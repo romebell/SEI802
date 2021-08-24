@@ -103,10 +103,9 @@ Wednesday the 11th of September in the year 1985
 
 * BONUS: Use moment's `.fromNow()` function to print just how many years ago that birthday was!
 
-<details>
-<summary>SOLUTION</summary>
 
-#### Solution Below
+
+#### Solution
 
 ```javascript
  const moment = require('moment') 
@@ -117,8 +116,6 @@ Wednesday the 11th of September in the year 1985
  // Prints how long ago my birthday was 
  console.log('Oh boy, that was', moment('09-11-1985', 'MM DD YYYY').fromNow(), 'years ago!') 
 ```
-
-</details>
 
 #### `.gitignore` File
 
