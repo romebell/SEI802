@@ -2,9 +2,9 @@
 
 There are three types of Node modules:
 
-* 1. Core Modules \(like `fs`\) 
-* 1. Local Modules \(that you create\) 
-* 1. Third Party Modules
+* `1` Core Modules \(like `fs`\) 
+* `2` Local Modules \(that you create\) 
+* `3` Third Party Modules ( `dependencies` )
 
 Core modules are great for gaining quick access to commonly-needed functionality in your program, and local modules allow you the flexibility to build out whatever tools you might possibly need, but third party modules, which fall somewhere in between, are perhaps the most exciting modules of them all!
 
