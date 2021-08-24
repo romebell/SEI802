@@ -44,7 +44,7 @@ Let's add some more code to our module. In `myModule.js`, add the following code
 module.exports.beBasic = () => "That's so fetch!"
 
 const count = () => {
-    for (var i = 0; i <= 10; i++) {
+    for (let i = 0; i <= 10; i++) {
         console.log(i);
     }
 }
@@ -88,7 +88,7 @@ Core modules just need to be imported using the `require` function.
 Write the following code to your entry point file:
 
 ```javascript
-var fs = require('fs');
+const fs = require('fs');
 
 fs.readFile('story.txt', 'utf8', function(err, data){
     if(err) {
