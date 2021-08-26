@@ -51,7 +51,7 @@ Let's circle back to our home route in our `hello-express` project and break the
 Here we have imported the express module, and created an instance of an express application called _app_. This code comes straight from the express [docs](https://expressjs.com/en/guide/routing.html).
 
 ```javascript
-const express require('express');
+const express = require('express');
 const app = express();
 ```
 
