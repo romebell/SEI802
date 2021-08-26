@@ -30,10 +30,10 @@ URL Patterns will become clearer as we get into some examples.
 
 There are 4 main HTTP verbs:
 
-* get
-* post
-* put
-* delete
+* GET
+* POST
+* PUT
+* DELETE
 
 These verbs represent a _method_ for the request. In other words, they tell the server what the nature of the request from the client is.
 
