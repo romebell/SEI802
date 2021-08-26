@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 
 The URL pattern '/' simply denotes the base URL or root of the app. This is almost always the directory where you initialized npm and git but can be different when you deploy it to a platform service.
 
-The last line of code in our program, `app.listen(8000)` tells our app to listen to port 8000. This is the actual "place" in the network layers of our operating system where the request will come in. After this starts, the full base URL of our app will be [http://localhost:8000](http://localhost:8000).
+The last line of code in our program, `app.listen(8000)` tells our app to listen to port 8000. This is the actual "place" in the network layers of our operating system where the request will come in. After this starts, the full base URL of our app will be `http://localhost:8000`.
 
 _**The combination of the URL Pattern '/' and the HTTP verb 'get' ensures that this route will be reached when a GET request made by the client from the base URL.**_
 
@@ -168,7 +168,7 @@ app.get('/', (req, res) => {
 app.listen(8000);
 ```
 
-Run nodemon and visit localhost:8000 to make sure everything is working.
+Run nodemon and visit `localhost:8000` to make sure everything is working.
 
 ### More Route Styles
 
@@ -186,7 +186,7 @@ app.get('/about', (req, res) => {
 });
 ```
 
-Visit localhost:8000/about to view the response from this route. We have made a "directory" in our app that will deliver the results of a different function whenever someone hits our site's `/about` URL.
+Visit `localhost:8000/about` to view the response from this route. We have made a "directory" in our app that will deliver the results of a different function whenever someone hits our site's `/about` URL.
 
 This is one of the primary ways in which we organize our site. Every part of our site **should** be bookmarkable in a browser - which means that each section needs a distinct URL. This is how we make our web server respond to different URLs.
 
@@ -221,8 +221,8 @@ app.get("/greet/:name", (req, res) => {
 And we can have more than one parameter:
 
 ```javascript
-app.get("/greet/:name/:lastname", (req, res) => {
-  res.send("Hello " + req.params.name + " " + req.params.lastname);
+app.get("/greet/:firstName/:lastName", (req, res) => {
+  res.send("Hello " + req.params.firstName + " " + req.params.lastName);
 });
 
 app.get("/multiply/:x/:y", (req, res) => {
