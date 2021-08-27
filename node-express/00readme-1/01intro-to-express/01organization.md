@@ -58,14 +58,18 @@ Require the module and add it to the app.
 _**index.js**_
 
 ```javascript
-var express = require('express');
-var app = express();
-var ejsLayouts = require('express-ejs-layouts');
+const express = require('express');
+const app = express();
+const ejsLayouts = require('express-ejs-layouts');
+
+const PORT = process.env.PORT;
 
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 
-app.listen(3000)
+app.listen(PORT, () => {
+  console.log('Server listening on PORT', PORT);
+});
 ```
 
 What is `app.use()`? This is an express function that indicates _middleware_. Middleware functions intercepts the request object when it comes in from the client, but before it hits any route. We'll see more examples of middleware later.
