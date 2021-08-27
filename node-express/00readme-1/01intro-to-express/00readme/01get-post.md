@@ -59,7 +59,7 @@ To access our data, we'll use the `fs` \(filesystem\) core module. Import this m
 
 ```javascript
 
-fs = require('fs');
+const fs = require('fs');
 ```
 
 Now let's pull in our data and take a took at it.
