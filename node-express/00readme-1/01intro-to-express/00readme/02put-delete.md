@@ -63,9 +63,12 @@ Since we can only use `POST` methods to activate the `method-override` functiona
 <ul>
   <% myDinos.forEach(function(dino, index) { %>
   <li><%= dino.name %> is a <%= dino.type %>
-      <form method="POST" action="/dinosaurs/<%= index %>/?_method=DELETE">
+  
+      <% let deleteRoute = "/dinosaurs/<%= index %>/?_method=DELETE"; %>
+      <form method="POST" action="<%= deleteRoute %>">
           <input type="submit" value="Delete">
       </form>
+      
   </li>
   <% }); %>
 </ul>
@@ -106,8 +109,12 @@ First we need a way for the user to edit an item. Add an edit link to the dinosa
 <ul>
   <% myDinos.forEach(function(dino, index) { %>
   <li><%= dino.name %> is a <%= dino.type %>
-      <a href="/dinosaurs/edit/<%= index %>">Edit</a>
-      <form method="POST" action="/dinosaurs/<%= index %>/?_method=DELETE">
+  
+     <% let editDinosaurLink = "/dinosaurs/edit/<%= index %>"
+      <a href="<%= editDinosaurLink %>">Edit</a>
+      
+      <% let deleteDinosaurAction = "/dinosaurs/<%= index %>/?_method=DELETE"
+      <form method="POST" action="<%= deleteDinosaurAction %>">
           <input type="submit" value="Delete">
       </form>
   </li>
