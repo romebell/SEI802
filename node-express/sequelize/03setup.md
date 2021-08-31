@@ -65,9 +65,14 @@ Let's change the config.json so it looks like this.
     "dialect": "postgres"
   },
   "production": {
-    "database": "userapp_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
+      }
   }
 }
 ```
