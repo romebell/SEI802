@@ -134,20 +134,64 @@ It's great that we can select all records from a table but we frequently want to
 Remember that in SQL, our comparison operators are a little different. Equality is a single equals `=` and inequality is represented by a "greater-than-or-less-than" symbol `<>`.
 
 ```sql
-- LIKE - SELECT * FROM customers WHERE name LIKE '%';
-- DISTINCT - SELECT DISTINCT name FROM customers;
-- ORDER BY - SELECT * FROM customers ORDER BY name DESC;
-- COUNT - SELECT count(*) FROM customers;
-- MAX - SELECT max(age) FROM customers;
-- MIN - SELECT min(age) FROM customers;
-- AND - SELECT * from customers WHERE name = 'Kaushik' AND age = 25;
-- OR - SELECT * from customers WHERE name = 'Silvana' OR name = 'Bira';
-- IN - SELECT * FROM customers WHERE name IN ('Amelia', 'Ramesh');
-- NOT IN - SELECT * FROM customers WHERE name NOT IN ('Amelia', 'Ramesh');
-- LIMIT - SELECT * FROM customers LIMIT 2;
-- OFFSET - SELECT * FROM customers OFFSET 1;
-- LIMIT + OFFSET - SELECT * FROM customers LIMIT 2 OFFSET 1;
-- % - SELECT * FROM customers WHERE name LIKE '%a';
+- LIKE - 
+SELECT * 
+FROM customers 
+WHERE name LIKE '%';
+- DISTINCT - 
+SELECT DISTINCT name 
+FROM customers;
+- ORDER BY - 
+SELECT * 
+FROM customers 
+ORDER BY name DESC;
+- COUNT - 
+SELECT count(*) 
+FROM customers;
+- MAX - 
+SELECT max(age) 
+FROM customers;
+- MIN - 
+SELECT min(age) 
+FROM customers;
+- AND - 
+SELECT * 
+FROM customers 
+WHERE name = 'Kaushik' AND age = 25;
+
+- OR - 
+SELECT * 
+FROM customers 
+WHERE name = 'Silvana' OR name = 'Bira';
+
+- IN - 
+SELECT * FROM customers 
+WHERE name IN ('Amelia', 'Ramesh');
+
+- NOT IN - 
+SELECT * 
+FROM customers 
+WHERE name NOT IN ('Amelia', 'Ramesh');
+
+- LIMIT - 
+SELECT * 
+FROM customers 
+LIMIT 2;
+
+- OFFSET - 
+SELECT * 
+FROM customers 
+OFFSET 1;
+
+- LIMIT + OFFSET - 
+SELECT * FROM customers 
+LIMIT 2 
+OFFSET 1;
+
+- % - 
+SELECT * 
+FROM customers 
+WHERE name LIKE '%a';
 ```
 
 ## COUNT\(\)
