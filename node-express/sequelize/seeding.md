@@ -51,8 +51,8 @@ module.exports = {
       return queryInterface.bulkInsert('Dinosaurs', [{
         name: 'General Dino',
         type: 'Assemblasaurus',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       }], {});
   },
 
@@ -75,32 +75,32 @@ Add more dinos to seed! Try editting your seed file to insert all the the dinosa
   {
     name:"Littlefoot",
     type:"apatosaurus",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     name:"Cera",
     type:"triceratops",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     name:"Ducky",
     type:"saurolophus",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     name:"Petrie",
     type:"pteranodon",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     name:"Spike",
     type:"stegosaurus",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   }
 ]
 ```
