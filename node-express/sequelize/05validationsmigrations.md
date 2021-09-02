@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
 
 `sequelize migration:create --name migrationNameGoesHere`
 
-This command creates a migration file, which is empty by default. Similar to Rails, you must specify the type of migration for both `up` and `down` methods. The `up` method is the migration you want to run, while the `down` method is the reverse.
+This command creates a migration file, which is empty by default. You must specify the type of migration for both `up` and `down` methods. The `up` method is the migration you want to run, while the `down` method is the reverse.
 
 For example, if I add a column in `up`, I would also want to remove that same column in `down`.
 
