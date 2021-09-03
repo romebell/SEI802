@@ -27,5 +27,5 @@ A `model` is a javascript object written as a `class` that maps to a data relati
 
 ## Migration
 
-A `migration` is similar to how we use a version control system such as `Git` to manage changes made to our source code on `Github`, you can use `migrations` to keep track of changes to the database. We are able to transfer changes to our exisiting database schema from one state to anohter. These state transitions are saved in migration files ( ex. `2375934934-create-user.js` ), which describe how to get to the new state and how to revert the changes in order to get back to the old state.
+A `migration` is similar to how we use a version control system such as `Git` to manage changes made to our source code on `Github`, you can use `migrations` to keep track of changes to the database. We are able to transfer changes to our exisiting database schema from one state to anohter. These state transitions are saved in migration files ( ex. `2375934934-create-user.js` ), which describes how to get to the new state and how to revert the changes in order to get back to the old state.
 
