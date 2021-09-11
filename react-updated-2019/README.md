@@ -1,2 +1,2 @@
-# React \(Updated 2019\)
+# React
 
