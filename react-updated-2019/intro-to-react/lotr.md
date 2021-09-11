@@ -30,20 +30,6 @@ Inside of `./src` folder, create a new React Component file called `Movie.js`.
 
 **src/Movie.js**
 
-```javascript
-import React, { Component } from 'react';
-
-class Movie extends Component {
-  render() {
-    return (
-      // we'll add JSX here
-    )
-  }
-}
-
-export default Movie
-```
-
 or, we could write it as a functional component, like so:
 
 ```javascript
