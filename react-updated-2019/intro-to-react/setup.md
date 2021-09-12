@@ -16,7 +16,7 @@ An easy way to start React projects is to use a Terminal program called [`create
 We'll call the example app "hello\_world", since that'll be our first project.
 
 ```bash
-$ npx create-react-app hello_world
+$ npx create-react-app hello-world
 ```
 
 Read more about npx [here](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
@@ -24,7 +24,7 @@ Read more about npx [here](https://medium.com/@maybekatz/introducing-npx-an-npm-
 The tool creates a new directory for your app, so move into it...
 
 ```bash
-$ cd hello_world
+$ cd hello-world
 ```
 
 Use `npm start` to start a server that will serve your new React application!
