@@ -5,17 +5,22 @@
 Let's have some practice creating a React component from scratch. How about a blog post?
 
 1. Change directories back into the main directory where you want to keep your code.
-2. Referring to everything we've done up until now, create a new project using `create-react-app`. If you need to refresh your memory, refer to the Initial Setup section or view the official [`create-react-app` Github repository](https://github.com/facebookincubator/create-react-app).
+2. Referring to everything we've done up until now, create a new project `dino-blog` using `create-react-app`. 
+If you need to refresh your memory, refer below or view the official [`create-react-app` Github repository](https://github.com/facebookincubator/create-react-app).
+<p align='center'>
+<img src='https://cdn.jsdelivr.net/gh/facebook/create-react-app@27b42ac7efa018f2541153ab30d63180f5fa39e0/screencast.svg' width='600' alt='npm start'>
+</p>
 
    > Note: If you are running something else on port 3000 - like a Node app or another React app, you may get prompted to use 3001 or specify a new port. You can do this or you can kill the process that's already running.
 
-3. Create a `post` object in `src/index.js` that has the following properties:
+3. Create a `post` object in `src/App.js` that has the following properties:
    * `title`  \(example value: `"Dinosaurs are awesome"`\)
    * `author` \(example value: `"Stealthy Stegosaurus"`\)
    * `body` \(example value: `"Check out this body property!"`\)
    * `comments` \(example value: `["First!", "Great post", "Hire this author now!"]`\)
-4. Render your `App` component with the information from your `post` object as its props values. For now, only include one of the comments, `comments[0]`. You decide how you want to display the title, author, body, and comment, or you can use the screenshot in the Solution section below as inspiration.
-5. Optional: adjust the CSS of your index file body to align your text to the center of the document.
+4. Create a `Post` component inside `src/Post.js`
+5. Render your `App` component with the information from your `Post` component and pass in the `post` object as props values to the `Post` component. For now, only display one of the comments, `comments[0]`. You decide how you want to display the `title`, `author`, `body`, and `comment`, or you can use the screenshot in the Solution section below as inspiration.
+6. Optional: adjust the CSS of your index file body to align your text to the center of the document.
 
 ## Solution
 
@@ -26,4 +31,3 @@ Here's what the solution might look like:
 ## Going forward
 
 Hang onto this code - we'll make some improvements to it so we can see all of the comments!
-
