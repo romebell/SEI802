@@ -1,11 +1,13 @@
-# APIs with Fetch and Axios
+# APIs with `Fetch` and Axios
 
 ### Learning Objectives
 
 _After this lesson, you will be able to:_
 
-* Identify the pieces of a `fetch()` call
 * Create a React component that calls an API
+* Identify the pieces of a `fetch()` and `axios()` call with `React`.
+* Use `fetch` inside a `React` component
+* Use `axios` inside a `React` component
 
 ## Introducing `fetch()`
 
@@ -31,7 +33,7 @@ The browser packages this together using `fetch()` and sends it off to a server.
 
 When you browse to your favorite websites, your browser is making a request and the server is providing a response. `fetch()` allows us to perform the same type of requests over a network. Imagine fetching weather information and rendering it on your website. You can use `fetch()` to build these applications.
 
-#### Taking a look at fetch in action
+#### Taking a look at `fetch` in action
 
 That was a lot! Let's take a look at `fetch()` in action.
 
@@ -71,20 +73,7 @@ fetch(url)
     // Here you get the data to modify or display as you please
     })
   })
-  .catch(function(ex) {
-    // If there is any error, you will catch it here
-  })
-```
-
-Or, in ES6 syntax:
-
-```javascript
-fetch(url)
-  .then((response) => {
-    // Here you get the data to modify or display as you please
-    })
-  })
-  .catch((ex) => {
+  .catch(function(err) {
     // If there is any error, you will catch it here
   })
 ```
@@ -94,24 +83,16 @@ Let's look at what we would apply this for our astronauts:
 ```javascript
 let issApi = 'http://api.open-notify.org/astros.json';
 fetch(issApi)
-  .then((response) => {
-    return response.json()
-  }).then((json) => {
-    console.log('JSON from the ISS', json)
-  }).catch((ex) => {
-    console.log('An error occured while parsing!', ex)
+  .then(function(response) => {
+    return response.json();
+  }).then(function(json) => {
+    console.log('JSON from the ISS', json);
+  }).catch(function(err) => {
+    console.log('An error occured while parsing!', err);
   })
 ```
 
-Let's break this API call down into a few steps.
-
-* `let issApi = 'http://api.open-notify.org/astros.json'`: First, we define our API URL to fetch from
-* `fetch(issApi)`: We call fetch on that API URL.
-* `.then((response) => { return response.json()`: We take the response when the server provides it. We return the `response.json()`
-* `.then((json) => { console.log('JSON from the ISS', json)`: We take that `json` and `console.log` it.
-* `catch((ex)`: If an error occurs, we catch it and log it.
-
-That's as simple as fetch is. While there are other ways to handle the response \(such as `html` or `blob`\), this approach makes writing requests to APIs and other network calls in Javascript easy.
+That's as simple as `fetch` is. While there are other ways to handle the response \(such as `html` or `blob`\), this approach makes writing requests to APIs and other network calls in Javascript easy.
 
 > _Production Warning!_ It is important to note that while this is an ES6 standard, [some browsers such as Internet Explorer](http://caniuse.com/#search=fetch) do not support it; yet Edge does. You may need a polyfill for live projects. If you need a polyfill for a production project, [Github's polyfill is very popular](https://github.com/github/fetch).
 
@@ -119,9 +100,9 @@ That's as simple as fetch is. While there are other ways to handle the response 
 
 It is time for you to build a very simple component that shows a randomly generated Kanye West Quote. We'll do this using the [Kanye Rest](https://api.kanye.rest/). Before doing so, challenge yourself to a mini quiz.
 
-**Q: Which React.Component method should API calls be made from?**
+**Q: Which React method should API calls be made from?**
 
-`componentDidMount()`. Per the [React documentation](https://facebook.github.io/react/docs/react-component.html#componentdidmount), _If you need to load data from a remote endpoint, this is a good place to instantiate the network request._
+`useEffect()`. Per the [React documentation](https://reactjs.org/docs/faq-ajax.html), _If you need to load data from a remote endpoint, this is a good place to instantiate the network request._
 
 **Q: What does it mean to make `GET` request?**
 
@@ -133,9 +114,9 @@ Let's go back to your blog project \(so make sure it's running!\).
 
 You can use `fetch()` API directly inside of a React Component to render a quote. We'll be using the `Home` component, so open `Home.js` to edit.
 
-The official [React documentation](https://facebook.github.io/react/docs/react-component.html#componentdidmount) tells developers that any network requests should be placed inside of the _componentDidMount_ method.
+The official [React documentation](https://reactjs.org/docs/hooks-effect.html) tells developers that any network requests should be placed inside of the _useEffect_ method.
 
-* Start by changing the `Home` component to have an empty `componentDidMount()` method.
+* Start by changing the `Home` component to have an empty `useEffect()` method.
 * Set the stage for returning a quote in the `div` by changing the text to be an `<h1>` with the text "My favorite Kanyw quote:"
 
 ## Let's use axios instead!
@@ -143,7 +124,28 @@ The official [React documentation](https://facebook.github.io/react/docs/react-c
 `fetch` is great and all... but let's take this opportunity to test out another common library! `axios` is Promise based HTTP client for the browser and node.js! More detailed information can be found in their [README on github](https://github.com/axios/axios).
 
 ```javascript
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
+function Home () {
+   useEffect(() => {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+}
+
 
 class Home extends Component {
 
@@ -186,56 +188,24 @@ We can now tell our component to fetch a Kanye quote and then set it to our stat
 
 Calling `this.setState()` then triggers a re-_render_ inside of our component.
 
-You should have this:
-
-```javascript
-import React, {Component} from 'react';
-import axios from 'axios';
-
-class Home extends Component {
-
-  state = {
-    kanye: ''
-  }
-
-  componentDidMount() {
-    let kanyeRest = 'https://api.kanye.rest/';
-    // fetch a poem
-    axios.get(kanyeRest).then( response => {
-      // set state
-      this.setState{kanye: response.data.quote}
-    }).catch(err => console.log(err))
-  }
-
-  render() {
-    let quote = this.state.kanye;
-    return (
-      <div>
-        <h1>My favorite Kanye quote:</h1>
-        {quote}
-      </div>
-     )
-  }
-}
-```
-
-or as a functional component...
+You should have this inside your functional component...
 
 ```javascript
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Home = () => {
+function Home() {
    let [kanye, setKanye] = useState('')
 
    useEffect(() => {
-   let kanyeRest = 'https://api.kanye.rest/'
-   axios.get(kanyeRest)
-   .then( response => {
-        setKanye(response.data.quote)
-      })
-   .catch(err => console.log(err.message))
+    let kanyeRest = 'https://api.kanye.rest/';
+    axios.get(kanyeRest)
+    .then(response => {
+          setKanye(response.data.quote)
+        })
+    .catch(err => console.log(err.message))
    }, [])
+
    return (
         <div>{kanye}</div>
    )
@@ -244,51 +214,30 @@ const Home = () => {
 
 Let's test it out!
 
-* Add an `if` statement under `render`.
-  * This simply checks to be sure that `axios.get()` has completed before `render()` tries to return the movie - otherwise it returns "Loading...".
-  * For this especially, it's important that the state is declared in the constructor. This way, the `if` statement does not fail if the asynchronous `setState()` hasn't completed the update yet.
 
-```javascript
-render() {
-       let quote = this.state.kanye;
-     if (this.state.kanye){
-       return (
-         <div>
-           <h1>My favorite Kanye quote:</h1>
-           {quote}
-         </div>
-       )
-     }
-     return (
-       <div>
-         <h1>My favorite Kanye quote:</h1>
-         Loading...
-       </div>
-     )
-  }
-```
 
 and one more time, as a functional component:
 
 ```javascript
-if(kanye){
-   return (
-   <div>
+if (kanye) {
+  return (
+    <div>
       <h1>My favorite Kanye quote:</h1>
       <div>{kanye}</div>
       <p>Lo, my heart doth swoon... Such a way with words.</p>
-   </div>
-   )
-}
-return (
+    </div>
+  );
+} else {
+  return (
    <div>
       <h1>My favorite Kanye quote:</h1>
       <div>Loading...</div>
    </div>
-)
+);
+}
 ```
 
-You're done! Your `home` page should load a random Kanye quote!
+You're done! Your `Home` page should load a random Kanye quote!
 
 For more information than you probably ever wanted to know about fetching data in React, these articles by Robin Weiruch make for a pretty complete resource:
 
