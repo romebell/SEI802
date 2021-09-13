@@ -42,17 +42,25 @@ On your `Weather` page, ask the user to input a zip code.
 
 **Important Notes**:
 
-* Because the OpenWeather API is not an open API, every request must end with this API key: `&appid=052f26926ae9784c2d677ca7bc5dec98`.
-* As an example, this is a URL to which you might send a `fetch()` request: `http://api.openweathermap.org/data/2.5/weather?zip=60614,us&appid=052f26926ae9784c2d677ca7bc5dec98`.
+* Because the OpenWeather API is not an open API, every request must end with this API key: 
 
-### Skeleton Code \(Starter\)
+* As an example, this is a URL to which you might send a `fetch()` request: 
+```js
+let API_KEY = '052f26926ae9784c2d677ca7bc5dec98';
+// use this API KEY
+let zipcode = '60614';60614
 
-Here is a functional Weather component starter:
+let openWeatherMapUrl = `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}`;
+```
+
+### Skeleton Code ( Starter )
+
+Here is a functional `Weather` component starter:
 
 ```javascript
 import React, { useEffect, useState } from 'react'
 
-const Weather = (props) => {
+function Weather(props) {
   // Your useState definitions here
   let [zipcode, setZipcode] = useState('')
 
@@ -81,57 +89,13 @@ const Weather = (props) => {
   )
 }
 
-
-export default Weather
-```
-
-You are free to use class-based components too if you'd like. Here is the starter code for a Weather class component.
-
-```javascript
-import React, { Component } from 'react';
-
-class Weather extends Component {
-
-  state = {
-    // Your required states here
-  }
-
-  handleChange = (event) => {
-    this.setState({zipcode: event.target.value});
-    console.log('Your zip code is' + this.state.zipcode);
-  }
-
-  handleSubmit = (event) => {
-    // Your fetch call here
-    // Your state updates go under function(json)
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-        <p>
-          { /* Display weather information here */ }
-        </p>
-        <label>
-          Please enter your zip code for the weather:
-          <input type="text" onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Get my forecast!" />
-      </form>
-      </div>
-    )
-  }
-}
-
-
 export default Weather;
 ```
 
 **Need a Hint or Two?**
 
 Hint 1  
-You'll only need to create and implement the \`Weather\` component. Nothing else needs to change in whichever existing app you created other than hooking up the component to a route with your router!
+You'll only need to create and implement the `Weather` component. Nothing else needs to change in whichever existing app you created other than hooking up the component to a route with your router!
 
 Hint 2  
 To see how to handle the form, check out the skeleton code.
@@ -140,8 +104,7 @@ To see how to handle the form, check out the skeleton code.
 
 Here are some extra ideas to challenge yourself if you have time:
 
-* Icons make every weather app come to life! There's a good way to do this - hunt around in the returned JSON for a recommended icon.
-* Spend a little time styling the page. Try to get it close to the example image above!
-* Make your current weather into a 5-day forecast
-* Make a `Use current location` button so the user can click that instead of providing the location.
-
+- [ ] Icons make every weather app come to life! There's a good way to do this - hunt around in the returned JSON for a recommended icon.
+- [ ] Spend a little time styling the page. Try to get it close to the example image above!
+- [ ] Make your current weather into a 5-day forecast
+- [ ] Make a `Use current location` button so the user can click that instead of providing the location.
