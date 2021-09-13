@@ -152,17 +152,24 @@ You may notice that while you have a valid URL and the site is deployed, your si
 ```javascript
 {
   "development": {
-    "database": "projectdb",
+    "database": "project_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "projectdb",
+    "database": "project_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
+    }
   }
 }
 ```
@@ -206,19 +213,20 @@ As of January 2019, here is a dependencies list \(for a package.json\) that work
 
 ```text
 "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "axios": "^0.21.4",
+    "bcrypt": "^5.0.1",
+    "cli": "^1.0.1",
     "connect-flash": "^0.1.1",
-    "dotenv": "^6.2.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "express-ejs-layouts": "^2.5.0",
-    "express-session": "^1.15.6",
-    "passport": "^0.4.0",
-    "passport-facebook": "^2.1.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pg": "^7.7.1",
-    "sequelize": "^4.42.0",
-    "sequelize-cli": "^4.1.1"
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
 }
 ```
 
