@@ -91,7 +91,7 @@ const addTwo = num => num + 2;
 
 > note that we dropped the curly braces and `return` keyword
 
-You can play with arrow functions in [this CodePen](https://codepen.io/SuperTernary/pen/qjQPzY). Remember, you can also use ES6 syntax in the Chrome dev-tools console, and your Create React App projects are transpiled with Babel, so you can use ES6 there too.
+You can play with arrow functions in [this CodePen](https://codepen.io/SuperTernary/pen/qjQPzY). Remember, you can also use ES6 syntax in the Chrome `dev-tools console`, and your Create React App projects are transpiled with Babel, so you can use ES6 there too.
 
 ### Implicit return
 
@@ -198,4 +198,3 @@ const eatBreakfast = pancakes => {
 ```
 
 > Check it out - the arrow function can be anywhere you declare a function!
-
