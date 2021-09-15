@@ -29,16 +29,22 @@ When using React, building components will be your main front-end task.
 
 ### Identifying Components
 
-Take a look at [CraigsList](https://boston.craigslist.org/search/aap) \(note: right click to open in a new tab!\).
+Take a look at [Tesla.com](https://www.tesla.com/home) \(note: right click to open in a new tab!\). We want to browse the page. Guess what, Tesla built their website using `React`. Let me prove it to you. Open a new tab. We are going to download the `React Developer Tools` from Google Extensions. Let's do that now. [Click here](chrome://extensions/). 
+* Type in React Developer Tools in the search bar. 
+* Install the extension ( may need to restart Google Chrome )
+* Go back to [Tesla.com](https://www.tesla.com/home) and inspect the page
+* Look for a tab inside of the Chrome Dev Tools called `Components`
+
+You should be able to see a `component` and it's `properties`
+
+Let us look at one more, [CraigsList](https://losangeles.craigslist.org/d/apartments-housing-for-rent/search/apa) \(note: right click to open in a new tab!\).
 
 ![Components](https://res.cloudinary.com/briezh/image/upload/v1556229627/craigslist_example_ruvqji.png)
 
-Each listing is a component. How can you identify this?
+ach listing is a component. How can you identify this?
 
 * Listings look identical in structure, but have different information populating them
 * Listings are dynamically generated based on the user's search
-
-Now, go to [Amtrak.com](https://www.amtrak.com/home) \(note: right click to open in a new tab!\). We want to look at the listing page, so put in any "From" \(for example, New York - Penn Station\), any "To" \(for example, Boston - South Station\), and pick any date. Hit "Find Trains".
 
 Now take a look at the listing page. Scrolling down it, identify the visual "components" the website is comprised of. We suggest drawing this out on paper! So something like this...
 
@@ -52,62 +58,49 @@ As you're drawing this out, think about the following questions...
 
 ### So -
 
-What does a component look like? Let's start with a simple "Hello World" example...
+What does a simple component look like? Let's start with a simple "Hello World" example...
 
 #### Code along: A Very Basic Component
 
 In this section, we'll walk through:
 
-* Removing the pre-filled contents of your `hello_world` app.
+* Removing the pre-filled contents of your `hello-world` app.
   * `create-react-app` filled your app with sample content - let's make room for your app!
 * Adding your own component definition.
   * You want the app to display the words "Hello World!"
 * Going through what we've done in detail!
 
-To start, remove the entire contents of the `src/App.js` file.
+To start, remove the contents inside of the `App` component located in `src/App.js` file.
 
-Then, add the component definition below - and yes, we know there are no semicolons here. Industry standards for React are to use semicolons as little as possible!
+Next, let's create a file called `src/Hello.js` 
 
-* With that said, many companies have their own programming style guide. While many companies don't use semicolons in React, some companies do - for example, AirBnB. It's important to check with your company for their practices!
+Write the code below inside of `Hello.js`
 
 ```javascript
-// bring in React and Component from React
+// import React
+import React from 'react';
 
-import React, {Component} from 'react';
-
-// define our Hello component
-class Hello extends Component {
-  // what should the component render?
-  render () {
-    // make sure to return some UI
-    return (
-      <h1>Hello World!</h1>
-    )
-  }
+function Hello() {
+  return <h1>Hello World!</h1>
 }
 
-export default Hello
+export default Hello;
 ```
 
 Let's break down the things we see here...
 
-**import React, {Component} from 'react'**
+**import React from 'react'**
 
-This imports React methods and the `Component` class from the React library.
+We first start off by import `React`
 
-**class Hello**
+**function Hello()**
 
-This is the component we're creating. In this example, we are creating a component and calling it "Hello."
+This is the component we're creating. In this example, we are creating a `functional` component and calling it "Hello."
 
-**extends Component**
 
-We inherit from the `Component` React library class to create our component definitions. Here, we are creating a new `Component` subclass called `Hello`.
+**return\(\)**
 
-* Because it extends \(also known as inherits from\) `Component`, our `Hello` class gets to reuse code and capabilities from `React.Component`.
-
-**render\(\)**
-
-Every component has, at minimum, a `render` method. The `render` method is what renders the component to the screen, so it controls what is displayed for this component. From this function, we return what we want to display.
+Every component has, at minimum, returns some `JSX` ( HTML "like" syntax). The `returns` is what renders the `component` to the screen, so it controls what is displayed for this component. From this function, we return what we want to display.
 
 * In our case, we are rendering a "Hello World!" heading: `<h1>Hello World!</h1>`.
 
@@ -115,11 +108,11 @@ Every component has, at minimum, a `render` method. The `render` method is what 
 
 **export default Hello**
 
-This exposes the `Hello` class to other files. This means that other files can `import` from the `App.js` file in order to use the `Hello` class. In our case, we'll be importing it into `index.js` by calling an `import` to `App.js`.
+**This exposes the `Hello` class to other files**. This means that other files can `import` from the `Hello.js` file in order to use the `Hello` component. In our case, we'll be importing it into `App.js` by calling an `import` to `Hello.js`.
 
-When we try to import something from `App.js`, JavaScript will attempt to match a named export.
+When we try to import something from `Hello.js`, JavaScript will attempt to match a named export.
 
-* Our only named export in `App.js` is `Hello`.
+* Our only named export in `Hello.js` is `Hello`.
 
 The `default` keyword means that if we try to import anything from this file that the app can't find, JavaScript will automatically revert to importing `Hello` instead.
 
@@ -136,44 +129,102 @@ This is currently the contents of our `src/App.js` file:
 ```javascript
 // bring in React and Component from React
 
-import React, {Component} from 'react';
+import React from 'react';
+import Hello from './Hello';
 
 // define our Hello component
-class Hello extends Component {
+
+function App() {
   // what should the component render?
-  render () {
-    // make sure to return some UI
-    return (
-      <h1>Hello World!</h1>
-    )
-  }
+  // Whatever is returning from the Hello component.
+  return (
+      // make sure to return some UI
+    <div>
+        <Hello />
+    </div>
+  );
 }
 
-export default Hello
+export default Hello;
+```
+
+Let's add a little styling inside `index.css`
+
+```css
+html, body
+  height: 100%
+  
+body
+  background: #333
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: Helvetica Neue
+  
+h1
+  font-size: 2em
+  color: #eee
+  display: inline-block
+
+a
+  color: white
+p
+  margin-top: 1em
+  text-align: center
+  color: #eee
 ```
 
 Let's talk about the value that the render method returns. It looks an awful lot like an HTML heading, but it's not. We often write out React components in **JSX**.
 
-Wait, what's that? Try it yourself alongside [this video](https://generalassembly.wistia.com/medias/dcps4dqziy) in [this codepen](https://codepen.io/susir/pen/wJPoBw) \(note: right click both links to open in a new tab!\)
-
 So, JSX allows us to write code that strongly resembles HTML. It is eventually compiled to lightweight JavaScript objects.
 
-Your `Hello` component's `render` method:
+Your `Hello` component returns:
 
 * Currently returns JSX, not HTML.
 * The JSX creates a heading with `'Hello World!'`.
 * Your component reads this and renders a "Hello World!" heading.
 
-> React can be written without JSX. We won't be doing this, but if you want to learn more, [check out this blog post](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/) \(note: open in new tab!\).
+React can be written without `JSX`. We won't be doing this. 👎🏽
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+var ui =
+      React.createElement('div', {}, 
+        React.createElement('h1', {}, "Hello World!")
+      )
+
+ReactDOM.render(ui, document.getElementById('root'))
+```
+
+Another example using React written without JSX.
+```js
+var ui =
+      React.createElement('div', {}, 
+        React.createElement('h1', {}, "Contacts"),
+        React.createElement('ul', {},
+          React.createElement('li', {},
+            React.createElement('h2', {}, "James Nelson"),
+            React.createElement('a', {href: 'mailto:james@jamesknelson.com'}, 'james@jamesknelson.com')
+          ),
+          React.createElement('li', {},
+            React.createElement('h2', {}, "Joe Citizen"),
+            React.createElement('a', {href: 'mailto:joe@example.com'}, 'joe@example.com')
+          )
+        )
+      )
+
+    ReactDOM.render(ui, document.getElementById('react-app'))
+```
 
 ### Challenge: Greet the day!
 
-* Change your `Hello` component to return multiple lines.
-  * Add a line below the "Hello World!" heading that will display `"It is time for tea."` in an `h3`.
+* Change your `App` component to display the `Hello` component multiple lines.
+* Add a line inside of your `App.js` below the last "Hello World!" heading that will display `"It is time for tea."` in an `h3`.
 
-> Hint: Remember, the return statement in `render` can only return one DOM element. You can, however, place multiple elements within a parent `div` element.\*
+> IMPORTANT: Remember, you can only return one DOM element. You can, however, place multiple elements within a parent `div` element. or a single fragment `<>`\*
 
-## We Do: Create a kitten component
+## We Do: Create a `Dog` component
 
-## You Do: Create a quote component
+## You Do: Create a `Human` component
 
