@@ -89,4 +89,6 @@ When our `index.js` is processed, React compares the `Virtual DOM` to the regula
 
 > Side note: What is `<Hello />` written in? JSX! Whenever you use a self-closing tag in JSX, you **MUST** end it with a `/`, like `<Hello />` in the above example. If you don't use a self-closing tag, JSX will look for a closing tag and never find it!
 
+* Let's switch it back to `<App />`!
+
 > If you're you have 35 mins of nothing to do on the weekend, check out this video with history on the Virtual to learn more, [check this video out](https://www.youtube.com/watch?v=-DX3vJiqxm4). _\(note: right click for new tab!\)_
