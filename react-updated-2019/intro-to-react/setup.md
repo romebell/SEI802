@@ -41,11 +41,10 @@ After running `$ npm start`, it will open your new app in your default browser a
 
 ## Stop / Catch Up / Investigate
 
-Take some time and look at what's been generated. Specifically pay attention to `src/App.js` and `src/index.js`
+Take some time and look at what's been generated. Specifically pay attention to `src/App.js`.
 
 Make small changes to the code in `src/App.js`
 
 You'll notice the web page for our app automatically refreshes every time we save a file in the directory. This is an awesome feature of `create-react-app`
 
 Your basic React app is up and running. Now you're ready to add complexity.
-
