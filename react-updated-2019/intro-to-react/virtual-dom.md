@@ -7,43 +7,38 @@ _After this lesson, you will be able to:_
 * Describe the Virtual DOM versus the standard DOM
 * Understand how components are called
 
-## Review and Refactor
+## Review `src/index.js`
 
-`Hello` in `src/App.js` is our component class. It has a `render` method that returns the JSX for our "Hello World!" and heading tags. Keeping components separate and organized is a best practice, so we created that class in its own file.
+> Keeping components separate and organized is a best practice, so we created the Hello component in its own file.
 
-To show up on the page, though, that component still needs to actually be called from somewhere. The main "hub" of our React app is `src/index.js`. We'll investigate how `src/index.js` is currently loading and rendering the component, and we'll improve the code by making it more explicit and readable.
-
-Look at your `src/index.js` file, and contrast it with the code below.
+To show up on the page, though, that component still needs to actually be called from somewhere. The main "HUB" 🛖 of our React app is `src/index.js`. We'll investigate how `src/index.js` is currently loading and rendering the `App` component. Look at your `src/index.js` file, and contrast it with the code below.
 
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './App.js';
+import App from './App.js';
 
 ReactDOM.render(
-  <Hello />,
+  <App />,
   document.getElementById('root')
 )
 ```
 
-The first \(and smallest\) difference is that we've dropped the CSS file import. We just aren't using it.
 
-The next difference is that `import App from './App';` has turned into `import Hello from './App.js'`.
+> The `App` component is being imported in from `src/App.js` Remember, the `default` part of `export default App` in `src/App.js` means that importing other names - like `App` - actually _already_ brings in the `App` component! As a best practice, though, we're going to leave this file alone. We will import `Hello` inside of the `App` along with other components, such as `Dog` and `Human`. Pretty cool!!
 
-> This line imports the `Hello` component from the `src/App.js` file. Remember, the `default` part of `export default Hello` in `src/App.js` means that importing other names - like `App` - actually _already_ brings in the `Hello` component! As a best practice, though, we're going to explicitly import the `Hello` component.
+The last difference is that `ReactDOM.render( <App />,`.
 
-The last difference is that `ReactDOM.render( <App />,` has turned into `ReactDOM.render( <Hello />,`.
+> This changes the `ReactDOM.render()` call to explicitly say "Render whatever the component `App` returns."
 
-> This changes the `ReactDOM.render()` call to explicitly say "Render whatever the component `Hello` returns."
-
-## Hello World exercise - You do!
+## Let's Hack away!
 
 ### Code along: Calling our `Hello` component explicitly
 
 Update your `index.js` file to have the three changes listed above:
 
 * Delete the CSS import.
-* Change the component name that's imported to be your `Hello` component.
+* Change the `App` component name that's imported to be your `Hello` component.
 * Change the component name that's used inside `ReactDOM.render` to be your `Hello` component.
 
 > Check it out! You should be able to browse to [http://localhost:3000](http://localhost:3000) and see that nothing has changed.
@@ -58,11 +53,9 @@ In React, the virtual DOM is a staging area for changes that will eventually be 
 
 ![Virtual DOM Diagram](https://docs.google.com/drawings/d/11ugBTwDkqn6p2n5Fkps1p3Elp8ZToIRzXzvM4LJMYaU/pub?w=543&h=229)
 
-> If you're interested in learning more about the Virtual DOM, [check this video out](https://www.youtube.com/watch?v=-DX3vJiqxm4). _\(note: right click for new tab!\)_
+You know every component has, at a minimum, a `return` statement. The `return` generates a `Virtual DOM` `node` to be added to the actual DOM.
 
-You know every component has, at a minimum, a `render` method. The `render` method generates a Virtual DOM node to be added to the actual DOM.
-
-The contents of this node are what we define in the method's return statement, using JSX.
+The contents of this `node` are what we define in the `return` statement, using JSX.
 
 The `ReactDOM.render()` function takes two arguments:
 
@@ -73,26 +66,27 @@ ReactDOM.render(
 )
 ```
 
-* `<Hello />` uses **the name of the component to render**. In our `App.js` file, the `Hello` component returns the content to render:  a div with "Hello World!" and heading tags \(written in JSX\). As a reminder, this is the `Hello` component:
+* `<Hello />` uses **the name of the component to render**. In our `Hello.js` file, the `Hello` component returns the content to render:  a `div` with "Hello World!" and heading tags \(written in JSX\). As a reminder, this is the `Hello` component:
 
 ```javascript
-  class Hello extends Component {
-    // what should the component render?
-    render () {
-      // make sure to return some UI
-      return (
-        <div>
-          <h1>Hello World!</h1>
-          <h3>It is time for tea.</h3>
-        </div>
-      )
-    }
-  }
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  return (
+    <div>
+        <Hello />
+    </div>
+  );
+}
+
+export default Hello;
 ```
 
-* The second argument of the `ReactDOM.render()` function is `document.getElementById('root')`; this finds **the DOM element to append that content to**. This argument can be any element on the page. Here, we're simply appending it to an element with the id `root`.  \(Look through the `index.html` file if you're curious about the HTML structure from `create-react-app`.\)
+* The second argument of the `ReactDOM.render()` function is `document.getElementById('root')`; this finds **the DOM `element` to append that content to**. This argument can be any element on the page. Here, we're simply appending it to an element with the id `root`.  \(Look through the `index.html` file if you're curious about the HTML structure from `create-react-app`.\)
 
-When our `index.js` is processed, React compares the virtual DOM to the regular DOM and only updates the `root` element on the page.
+When our `index.js` is processed, React compares the `Virtual DOM` to the regular DOM and only updates the `root` element on the page. Dope!
 
 > Side note: What is `<Hello />` written in? JSX! Whenever you use a self-closing tag in JSX, you **MUST** end it with a `/`, like `<Hello />` in the above example. If you don't use a self-closing tag, JSX will look for a closing tag and never find it!
 
+> If you're you have 35 mins of nothing to do on the weekend, check out this video with history on the Virtual to learn more, [check this video out](https://www.youtube.com/watch?v=-DX3vJiqxm4). _\(note: right click for new tab!\)_

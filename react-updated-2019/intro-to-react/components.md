@@ -127,11 +127,9 @@ Start your server ( `npm start` ). Now switch to your browser and navigate to [h
 This is currently the contents of our `src/App.js` file:
 
 ```javascript
-// bring in React and Component from React
-
+// import React, Hello component
 import React from 'react';
 import Hello from './Hello';
-import './index.css';
 
 // define our Hello component
 
@@ -153,26 +151,26 @@ Let's add a little styling inside `index.css`
 
 ```css
 html, body
-  height: 100%
+  height: 100%;
   
 body
-  background: #333
-  display: flex
-  justify-content: center
-  align-items: center
-  font-family: Helvetica Neue
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica Neue;
   
 h1
-  font-size: 2em
-  color: #eee
-  display: inline-block
+  font-size: 2em;
+  color: #eee;
+  display: inline-block;
 
 a
-  color: white
+  color: white;
 p
-  margin-top: 1em
-  text-align: center
-  color: #eee
+  margin-top: 1em;
+  text-align: center;
+  color: #eee;
 ```
 
 Let's talk about the value that the render method returns. It looks an awful lot like an HTML heading, but it's not. We often write out React components in **JSX**.
@@ -189,7 +187,6 @@ React can be written without `JSX`. We won't be doing this. 👎🏽
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 
 var ui =
       React.createElement('div', {}, 
@@ -230,3 +227,4 @@ var ui =
 
 ## `todo` You Do: Create a `Human` component
 
+## `todo` You Do: Add some styling to the `Dog` component ( create `Dog.css` )
