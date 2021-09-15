@@ -89,16 +89,16 @@ export default Hello;
 
 Let's break down the things we see here...
 
-**import React from 'react'**
+**`import React from 'react'`**
 
 We first start off by import `React`
 
-**function Hello()**
+**`function Hello() {}`**
 
 This is the component we're creating. In this example, we are creating a `functional` component and calling it "Hello."
 
 
-**return\(\)**
+**`return\(\)`**
 
 Every component has, at minimum, returns some `JSX` ( HTML "like" syntax). The `returns` is what renders the `component` to the screen, so it controls what is displayed for this component. From this function, we return what we want to display.
 
@@ -106,7 +106,7 @@ Every component has, at minimum, returns some `JSX` ( HTML "like" syntax). The `
 
 > Note! That heading tag above looks like it's straight out of HTML, but it's actually a special language called JSX, which you'll see on the next page. For now, know that JSX will act like HTML when it's rendered to the screen.
 
-**export default Hello**
+**`export default Hello`**
 
 **This exposes the `Hello` class to other files**. This means that other files can `import` from the `Hello.js` file in order to use the `Hello` component. In our case, we'll be importing it into `App.js` by calling an `import` to `Hello.js`.
 
@@ -120,7 +120,7 @@ The `default` keyword means that if we try to import anything from this file tha
 
 ### Check it out!
 
-If you switch to your browser and navigate to [http://localhost:3000](http://localhost:3000), you can see your "Hello World!" heading. This app dynamically reloads each time you save, so you can check your changes at any point.
+Start your server ( `npm start` ). Now switch to your browser and navigate to [http://localhost:3000](http://localhost:3000), you can see your "Hello World!" heading. This app dynamically reloads each time you save, so you can check your changes at any point.
 
 ### Wait - What's that HTML doing in my Javascript?
 
