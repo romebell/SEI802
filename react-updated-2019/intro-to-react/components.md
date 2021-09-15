@@ -224,7 +224,7 @@ var ui =
 
 > IMPORTANT: Remember, you can only return one DOM element. You can, however, place multiple elements within a parent `div` element. or a single fragment `<>`\*
 
-## We Do: Create a `Dog` component
+## `todo` We Do: Create a `Dog` component
 
-## You Do: Create a `Human` component
+## `todo` You Do: Create a `Human` component
 
