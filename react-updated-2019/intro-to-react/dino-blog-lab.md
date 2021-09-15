@@ -5,11 +5,10 @@
 ### Part 1 
 Let's have some practice creating a React component from scratch. How about a blog post?
 
-1. Change directories back into the main directory where you want to keep your code.
-2. Referring to everything we've done up until now, create a new project `dino-blog` using `create-react-app`.
-3. Create a repo called `dino-blog` ( make it public ). Add a `README.md`.
-4. Clone down your `dino-blog` repo. 
-5. `cd` into `dino-blog` and add react
+1. Change directories to `labs` where you're going to create the next project
+2. Create a repo called `dino-blog` ( make it public ). Add a `README.md`.
+3. Clone down your `dino-blog` repo. 
+4. `cd` into `dino-blog` and add react
 
 ```zsh
 $ npx create-react-app .
