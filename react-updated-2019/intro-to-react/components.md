@@ -98,7 +98,7 @@ We first start off by import `React`
 This is the component we're creating. In this example, we are creating a `functional` component and calling it "Hello."
 
 
-**`return\(\)`**
+**`return()`**
 
 Every component has, at minimum, returns some `JSX` ( HTML "like" syntax). The `returns` is what renders the `component` to the screen, so it controls what is displayed for this component. From this function, we return what we want to display.
 
@@ -131,6 +131,7 @@ This is currently the contents of our `src/App.js` file:
 
 import React from 'react';
 import Hello from './Hello';
+import './index.css';
 
 // define our Hello component
 
@@ -188,6 +189,7 @@ React can be written without `JSX`. We won't be doing this. 👎🏽
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
 var ui =
       React.createElement('div', {}, 
