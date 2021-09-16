@@ -23,194 +23,212 @@ Our data will be simple - a list of fruits. The app will end up looking somethin
 
 ![Fruit filter app](../../.gitbook/assets/filter-example%20%281%29.png)
 
-When building a React app, it's important to take time to define the app's structure before you start writing code. I'm going to define the **components** and the **state** I need before I write the code.
+When building a React app, it's important to take time to define the app's structure before you start writing code. We're going to define the **components** and the **state** we need before we write the code.
 
 #### Components
 
 This app needs two components:
 
-* 1. A `List` component to display the list of fruit. 
+* A `List` component to display the list of fruit. 
      * This component needs one piece of data: the array of fruits to display.
-* 1. An `Input` to capture the filter value from the user.
+* An `Input` to capture the filter value from the user.
      * This component needs one piece of data: the current value of the filter.
 
 #### State
 
 This app needs to keep track of changes in two items:
 
-* 1. The filtered list of fruits 
-* 1. The value of the filter
+* The filtered list of fruits 
+* The value of the filter
 
 #### Component hierarchy
 
-I have two sibling components \(components at the same level of the tree/app\) that need to be aware of each other's data. Specifically, the `List` component needs to only show the fruits that match the filter value. So I need to get data from one sibling to another. Something like this:
+We have two sibling components \(components at the same level of the tree/app\) that need to be aware of each other's data. Specifically, the `List` component needs to only show the fruits that match the filter value. So we need to get data from one sibling to another. Something like this:
 
 ![basic data flow needed](../../.gitbook/assets/fruit-filter-data.png)
 
-How to achieve this, though? Using unidrectional data flow, of course! If I create a container component to hold both the filter value and the filtered list, I can hoist the `state` to the container so it's available to all the children. It will then be simple to display the `state` in the child components. The data will flow like this:
+How to achieve this, though? Using unidrectional data flow, of course! If we create a container component to hold both the filter value and the filtered list, we can hoist the `state` to the container so it's available to all the children. It will then be simple to display the `state` in the child components. The data will flow like this:
 
 ![unidirectional approach](../../.gitbook/assets/fruit-list-unidirectional.png)
 
-Now that I know the components I need, the `state` I need, and where everything needs to be, I can start writing some code.
+Now that we know the components we need, the `state` we need, and where everything needs to be, we can start writing some code.
 
 ## Child Components
 
-```javascript
-import React, { Component } from 'react';
+`List.js`
+```jsx
+import React from 'react';
 
-class List extends Component {
-    render(){
-        return (
-            <ul>
-                {/* list will go here */}
-            </ul>
-        )
-    }
+const List = props => {
+
+  return(
+    <ul>
+    {/* list will go here */}
+    </ul>
+  )
 }
 
 export default List;
 ```
 
+`Input.js`
 ```jsx
-import React, { Component } from 'react';
+import React from 'react';
 
-class Input extends Component {
-    render(){
-        return (
-            <div>
-                <label htmlFor="fruit-filter">Filter these Fruits: </label>
-                <input type="text" name="fruit-filter" />
-            </div>
-        )
-    }
+const Input = props => {
+
+  return(
+    <div>
+        <label htmlFor="fruit-filter">Filter these Fruits: </label>
+        <input type="text" name="fruit-filter" />
+    </div>
+  )
 }
 
-export default Input;
+export default Input
 ```
 
-#### Container component
+### Container Component
 
-My container will be a class with a few methods I'll use to initialize and update the state of the two child components. In the constructor, I'll initialize the state:
+Our container will be a component with a few functions we'll use to initialize and update the state of the two child components. Using hooks, we'll initialize the state:
 
 ```jsx
-    state = {
-      // initialize the fruit list to the full list passed in props
-      fruitsToDisplay: this.props.fruits,
-      // intialize the filter value to an empty string
-      filterValue: ''
-    }
+import React, {useState} from 'react';
+
+const FruitContainer = props => {
+  const [fruitsToDisplay, setFruitsToDisplay] = useState(props.fruits);
+  const [filterValue, setFilterValue] = useState('');
+
+  return(
+    //...
+  )
+}
+
+export default FruitContainer;
 ```
 
-I'll need a method to update the `state` when the filter value changes. This method will store the filter `state`, and filter the list of fruits to display. I'll pass this change handler to the filter component to react to user input.
+We've set up state to accept a list of fruits as props from a parent component, so let's go into `App.js` and make sure everything's set up the way we need it there.
 
 ```jsx
-    handleFilterChange = (e) => {
-      e.preventDefault()
-      const filterValue = e.target.value;
-      // remove fruits that don't contain the filter value
-      const filteredFruitList = this.props.fruits.filter(fruit => {
-        return fruit.toLowerCase().includes(filterValue.toLowerCase())
-      })
-      this.setState({
-          fruitsToDisplay: filteredFruitList,
-          filterValue,
-      })
-    }
+import './App.css';
+import FruitContainer from './FruitContainer'
+
+function App() {
+  const fruitArr = ['Apple', 'Banana', 'Grapes', 'Kiwi', 'Pineapple', 'Dragonfruit', 'Mango']
+  return (
+    <div className="App">
+      <FruitContainer fruits={fruitArr} />
+    </div>
+  );
+}
+
+export default App;
 ```
 
-Finally, I need to render my child components.
+We'll need a function to update the `state` when the filter value changes. This function will store the filter `state`, and filter the list of fruits to display. We'll pass this change handler to the input component to react to user behavior.
 
 ```jsx
-render() {
-    return (
-        <div>
-          <Input value={this.state.filterValue} onChange={this.handleFilterChange} />
-          <List fruits={this.state.fruitsToDisplay} />
-        </div>
-    )
+ const handleFilterChange = e => {
+    e.preventDefault();
+
+    const newValue = e.target.value;
+    setFilterValue(newValue);
+
+    // remove fruits that don't contain the filter value
+    const filteredFruitList = props.fruits.filter(fruit => {
+      return fruit.toLowerCase().includes(newValue.toLowerCase());
+    })
+    
+    setFruitsToDisplay(filteredFruitList);
   }
+```
+
+And finally, we need to render our child components.
+
+```jsx
+return (
+    <div>
+      <Input value={filterValue} onChange={handleFilterChange} />
+      <List fruits={fruitsToDisplay} />
+    </div>
+  )
 ```
 
 The full container component looks like this:
 
-```javascript
-import React, { Component } from 'react';
-import Input from './Input'
-import List from './List'
+```jsx
+import React, {useState} from 'react';
+import Input from './Input';
+import List from './List';
 
-class FruitContainer extends Component {
-    state = {
-      // initialize the fruit list to the full list passed in props
-      fruitsToDisplay: this.props.fruits,
-      // intialize the filter value to an empty string
-      filterValue: ''
-    }
+const FruitContainer = props => {
+  // Initialize the fruit list to the array passed in props
+  const [fruitsToDisplay, setFruitsToDisplay] = useState(props.fruits); 
+  // Initialize the filter value to an empty string
+  const [filterValue, setFilterValue] = useState('');
 
-    handleFilterChange = (e) => {
-      e.preventDefault()
-      const filterValue = e.target.value;
-      // remove fruits that don't contain the filter value
-      const filteredFruitList = this.props.fruits.filter(fruit => {
-        return fruit.toLowerCase().includes(filterValue.toLowerCase())
-      })
-      this.setState({
-          fruitsToDisplay: filteredFruitList,
-          filterValue,
-      })
-    }
+  const handleFilterChange = e => {
+    e.preventDefault();
 
-    render() {
-      return (
-        <div>
-          <Input value={this.state.filterValue} onChange={this.handleFilterChange} />
-          <List fruits={this.state.fruitsToDisplay} />
-        </div>
-      )
-    }
+    const newValue = e.target.value;
+    setFilterValue(newValue);
 
+    // remove fruits that don't contain the filter value
+    const filteredFruitList = props.fruits.filter(fruit => {
+      return fruit.toLowerCase().includes(newValue.toLowerCase());
+    })
+    
+    setFruitsToDisplay(filteredFruitList);
   }
 
+  return (
+    <div>
+      <Input value={filterValue} onChange={handleFilterChange} />
+      <List fruits={fruitsToDisplay} />
+    </div>
+  )
+}
 
-export default FruitContainer
+export default FruitContainer;
 ```
 
-All of the data is hoisted to the top of the tree in the container, and I pass it to the child components.
+All of the data is hoisted to the top of the tree in the container, and we pass it to the child components.
 
-Now I need to return to the children components and add the functionality to handle the data it's receiving!
+Now we need to return to the children components and add the functionality to handle the data they're receiving!
 
-## Finished Children components:
+## Finished Child components:
 
+`Input.js`
 ```jsx
-import React, { Component } from 'react';
+import React from 'react';
 
-class Input extends Component {
-    render(){
-        return (
-            <div>
-                <label htmlFor="fruit-filter">Filter these Fruits: </label>
-                <input type="text" value={this.props.value} onChange={this.props.onChange} name="fruit-filter" />
-            </div>
-        )
-    }
+const Input = props => {
+
+  return (
+    <div>
+      <label htmlFor="fruit-filter">Filter these Fruits: </label>
+      <input type="text" name="fruit-filter" value={props.value} onChange={props.onChange} />
+    </div>
+  )
 }
 
 export default Input;
 ```
 
+`List.js`
 ```jsx
-import React, { Component } from 'react';
+import React from 'react';
 
-class List extends Component {
-    render(){
-        const fruitItems = this.props.fruits.map((f)=>{
-            return <li>{f}</li>
-        })
-        return (
-            <ul>
-                {fruitItems}
-            </ul>
-        )
-    }
+const List = props => {
+  const fruitItems = props.fruits.map((fruit, idx) => {
+    return <li key={idx}>{fruit}</li>
+  })
+
+  return (
+    <ul>
+      {fruitItems}
+    </ul>
+  )
 }
 
 export default List;
@@ -234,12 +252,8 @@ Coming Soon!
 
 It's important that you think through your applications before you start writing code. It's often helpful to sketch out your app, and identify:
 
-* the **components**
-
-  you will need
-
+* the **components** you will need
 * the **states** you will need
 * where those states need to live
 
 Use the unidirectional data flow pattern - hoist your state toward the top of the component tree so it's available to the children that need it.
-
