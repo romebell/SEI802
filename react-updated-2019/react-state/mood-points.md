@@ -31,8 +31,6 @@ In React, we are able to handle data in one of two ways:
 * Like props, which we access through the `props` object, we can access state using `state`.
 * As state has the ability to be changed, it is not quite as straightforward as props. However, once you get the hang of it, you'll be able to build really interactive apps!
 
-![](https://github.com/TaylorDarneille/notes-1/tree/a13a0ac2fda9db5974a38bd1c5c7463b0a34a1ca/16-react/react-state/images/moodtracker-directories.png)
-
 **Talking Points:**
 
 * Let's use `hello-world` to create a new `MoodTracker` component. Our `MoodTracker` will display a mood, and eventually a user will click a button to indicate on a scale of 1–10 how strongly they are feeling that mood.
