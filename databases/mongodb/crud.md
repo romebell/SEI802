@@ -24,19 +24,19 @@ Show the collections of the current database `> show collections`.
 
 To create a new database in the Mongo Shell, we simply have to _use_ the database. Lets create a database named _myDB_:
 
-```text
-> use myDB
+```zsh
+use myDB
 ```
 
 #### Inserting Data into a Collection
 
 This how we can create and insert a document into a collection named _people_:
 
-```text
-> db.people.insert({
+```js
+db.people.insert({
   name: "Fred",
   age: 21
-})
+});
 ```
 
 Using a collection for the first time creates it!
@@ -152,4 +152,5 @@ db.people.remove({
    age: { $lt: 16 } 
 });
 ```
+
 
