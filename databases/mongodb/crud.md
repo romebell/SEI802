@@ -46,8 +46,7 @@ Using a collection for the first time creates it!
 In a moment we'll practice querying our database, but let's get more data in there. Here are few more documents to put in your _people_ collection. We can simply provide this **array** to the _insert_ method and it will create a document for each object in the array.
 
 ```javascript
-db.people.insert(
-[
+db.people.insert([
   {
     "name": "Emma",
     "age": 20
@@ -72,15 +71,15 @@ db.people.insert(
     "name": "Adrian",
     "age": 47
   }
-])
+]);
 ```
 
 ## Querying Documents
 
 To list all documents in a collection, we use the _find_ method on the collection without any arguments:
 
-```text
-> db.people.find()
+```js
+db.people.find()
 ```
 
 Again, unlike the rows in a relational database, our documents don't have to have the same fields!
@@ -89,14 +88,14 @@ Again, unlike the rows in a relational database, our documents don't have to hav
 
 We can also use the `find()` method to query the collection by passing in an argument – a JS object containing criteria to query with.
 
-```text
-> db.people.find({name: "Adrian"})
+```js
+db.people.find({ name: "Adrian" })
 ```
 
 There are a handful of special criteria variables we can use, too. Here's how we can use MongoDB's `$gt` query operator to return all _people_ documents with an age greater than 20:
 
-```text
-> db.people.find({age: { $gt: 20}})
+```js
+db.people.find({ age: { $gt: 20 } });
 ```
 
 MongoDB comes with a slew of built-in [query operators](http://docs.mongodb.org/manual/reference/operator/query/#query-selectors) we can use to write complex queries.
@@ -105,8 +104,8 @@ MongoDB comes with a slew of built-in [query operators](http://docs.mongodb.org/
 
 This sorts our age query and sorts by _name_:
 
-```text
-> db.people.find({age: {$gt: 20}}).sort({name: 1})
+```js
+db.people.find({ age: {$gt: 20} }).sort({ name: 1 })
 ```
 
 The "1" indicates ascending order.
@@ -117,14 +116,21 @@ The "1" indicates ascending order.
 
 In MongoDB, we use the `update()` method of collections by specifying the _update criteria_ \(like we did with `find()`\), and use the `$set` action to set the new value.
 
-```text
-> db.people.update({name: "Adrian"}, {$set: { age: 99 } })
+```js
+db.people.update({ name: "Adrian" }, {
+   $set: { age: 99 } 
+});
 ```
 
 By default `update()` will only modify a single document. However, with the `multi` option, we can update all of the documents that match the query.
 
-```text
-> db.people.update( { name: { $lt: "M" } }, { $inc: { age: 10 } }, { multi: true } )
+```js
+db.people.update({ name: { $lt: "M" } }, { 
+   $inc: { age: 10 } 
+}, 
+{ 
+   multi: true 
+});
 ```
 
 We used the `$inc` update operator to increase the existing value.
@@ -141,7 +147,9 @@ Call `remove({})` on the collection to remove all docs from a collection. Note: 
 
 Otherwise, specify a criteria to remove all documents that match it:
 
-```text
->db.people.remove( { age: { $lt: 16 } } )
+```js
+db.people.remove({ 
+   age: { $lt: 16 } 
+});
 ```
 
