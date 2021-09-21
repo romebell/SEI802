@@ -102,6 +102,9 @@ db.people.find({ age: { $gt: 20 } });
 MongoDB comes with a slew of built-in [query operators](http://docs.mongodb.org/manual/reference/operator/query/#query-selectors) we can use to write complex queries.
 
 **How would we write a query to retrieve people that are less than or equal to age 24?**
+```js
+db.people.find({ age: { $lte: 24 } });
+```
 
 This sorts our age query and sorts by _name_:
 
