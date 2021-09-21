@@ -49,7 +49,8 @@ In a moment we'll practice querying our database, but let's get more data in the
 db.people.insert([
   {
     "name": "Emma",
-    "age": 20
+    "age": 20,
+    "email": "emma@email.com"
   },
   {
     "name": "Ray",
