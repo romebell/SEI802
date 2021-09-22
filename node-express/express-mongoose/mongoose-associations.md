@@ -109,7 +109,10 @@ Consider the following example that maps `Product` and `Order` relationships. Th
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    products: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
+    date: Date,
+    products: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
+    buyer: String,
+    trackingNumber: String
 });
 
 const Order = mongoose.model('Order', orderSchema);
