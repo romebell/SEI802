@@ -14,11 +14,10 @@ Make it work, and make it awesome.
 
 Your app must:
 
-* **Build a full-stack application** by making your own backend and your own front-end
-  * Note that if you build an app using Ionic, a backend is optional. However, look into services such as Firebase if you'd like a service for storing data.
-* **Have an interactive front-end**, preferably using a modern front-end framework
+* **Build a full-stack application** by making your own backend using MongoDB and your own front-end using React
+* **Have an interactive front-end**, using front-end framework React
 * **Be a complete product**, which most likely means multiple relationships and CRUD functionality for at least a couple models. However, this is ultimately up to your discretion.
-* **Use a database**, whether that's one we've covered in class or one you want to learn
+* **Use a database**, MongoDB
 * **Implement thoughtful user stories** that are significant enough to help you know which features to build and which to scrap
 * **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers
 * **Be deployed online** so it's publicly accessible
