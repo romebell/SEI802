@@ -1,5 +1,5 @@
 ---
-Welcome to SEI 802!
+Welcome to SEI Example!
 ---
 
 # Introduction
@@ -17,10 +17,6 @@ Let's enjoy the ride 🎢 `together`. Let's go!
 | Name | Role | Slack | Email |
 | :--- | :--- | :--- | :--- |
 | Rome Bell | Lead Instructor | @rome | rome.bell@ga.co |
-| Quinlan Sparks | Instructor Associate | @Quinlan Sparks | quinlan.sparks@generalassemb.ly |
-| Cassie Pitkin | Career Coach | @Cassie Pitkin | cassie.pitkin@generalassemb.ly |
-| Claire Avershal | Campus Manager | @Claire Avershal | claire.avershal@ga.co |
-| Ashley Berryhill | Instructor Manager | @Ashley Berryhill | ashley.berryhill@ga.co |
 
 ## GA SEI Graduation Requirements
 
@@ -41,7 +37,7 @@ When you complete our program with passing status, you unlock our alumni perks:
 ## Suggested Repo Structure
 
 ```text
-/SEI802
+/SEI-Example
     /unit_one
     /unit_two
     /unit_three
